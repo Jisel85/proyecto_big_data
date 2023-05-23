@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from typing import List, Dict
 from funciones.lista_pdfs import lista_pdfs
 from funciones.conectar_bd import conectar_bd
@@ -6,10 +7,12 @@ from funciones.extraer_texto import extraer_texto
 from funciones.crear_dict import crear_dict
 from funciones.insertar_info import insertar_info
 
-carpeta_pdfs: str  = '.\DatasetTotal'
-pdfs: List[str] = lista_pdfs(carpeta_pdfs)
+load_dotenv()
 
-conexion = conectar_bd(credenciales_bd)
+conexion = conectar_bd()
+
+carpeta_pdfs: str = '.\DatasetTotal'
+pdfs: List[str] = lista_pdfs(carpeta_pdfs)
 
 for pdf in pdfs:
     lista_imagenes: List[str] = obtener_imagenes(pdf)
