@@ -7,4 +7,5 @@ def conectar_bd():
     db = client["proyecto"]
     collection = db["sentencias"]
     print(client.server_info())
+    collection.create_index([("Texto", "text")])
     return collection
